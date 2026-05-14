@@ -457,7 +457,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--primary-dark);
 }
 
-<<<<<<< HEAD
 .nav-link.active {
     color: var(--primary);
     font-weight: 700;
@@ -660,7 +659,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-section .button-primary {
     margin-top: var(--spacing-lg);
-=======
+}
+
 .button-hero {
     border: 2px solid var(--primary);
     background-color: transparent;
@@ -687,7 +687,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
     color: var(--ink);
->>>>>>> 9c180a26bb86bc2b3cf31eefd1446c51cd121198
 }
 
 /* ====================================

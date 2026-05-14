@@ -631,6 +631,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--on-dark);
 }
 
+/* Contact Section */
+.contact-section {
+    background-color: var(--surface-soft);
+    padding: var(--spacing-section) var(--spacing-lg);
+}
+
 /* CTA Section */
 .cta-section {
     background-color: var(--surface-soft);
@@ -658,6 +664,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cta-section .button-primary {
+    margin-top: var(--spacing-lg);
+}
+
+.cta-section .button-hero {
     margin-top: var(--spacing-lg);
 }
 

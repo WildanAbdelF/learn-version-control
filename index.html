@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAB Service - Layanan Handphone & Gadget Terpercaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,7 +28,7 @@
         <div class="hero-content">
             <h1 class="hero-title">Solusi Layanan Handphone & Gadget Anda</h1>
             <p class="hero-subtitle">Teknisi profesional siap memberikan layanan terbaik untuk semua kebutuhan device Anda</p>
-            <button class="button-primary">Hubungi Kami Sekarang</button>
+            <button class="button-hero">Hubungi Kami Sekarang</button>
         </div>
     </section>
 
@@ -37,52 +38,47 @@
             <h2 class="section-title">Layanan Kami</h2>
             <p class="section-subtitle">Kami menyediakan berbagai layanan untuk memastikan device Anda selalu dalam kondisi terbaik</p>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3 class="card-title">Perbaikan Layar</h3>
-                    <p class="card-description">Ganti layar rusak dengan kualitas original dan garansi resmi</p>
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow-prev" id="prevBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="service-card">
+                            <h3 class="card-title">Perbaikan Layar</h3>
+                            <p class="card-description">Ganti layar rusak dengan kualitas original dan garansi resmi</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Servis Hardware</h3>
+                            <p class="card-description">Perbaikan komponen internal dan diagnosa masalah teknis</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Ganti Baterai</h3>
+                            <p class="card-description">Penggantian baterai original dengan garansi 6 bulan</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Cleaning & Maintenance</h3>
+                            <p class="card-description">Pembersihan mendalam dan perawatan rutin untuk performa optimal</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Data Recovery</h3>
+                            <p class="card-description">Pemulihan data dengan teknologi terkini dan tingkat keberhasilan tinggi</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Custom Upgrade</h3>
+                            <p class="card-description">Upgrade RAM, storage, dan modifikasi device sesuai kebutuhan</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3 class="card-title">Servis Hardware</h3>
-                    <p class="card-description">Perbaikan komponen internal dan diagnosa masalah teknis</p>
-                </div>
-                <div class="service-card">
-                    <h3 class="card-title">Ganti Baterai</h3>
-                    <p class="card-description">Penggantian baterai original dengan garansi 6 bulan</p>
-                </div>
-                <div class="service-card">
-                    <h3 class="card-title">Cleaning & Maintenance</h3>
-                    <p class="card-description">Pembersihan mendalam dan perawatan rutin untuk performa optimal</p>
-                </div>
-                <div class="service-card">
-                    <h3 class="card-title">Data Recovery</h3>
-                    <p class="card-description">Pemulihan data dengan teknologi terkini dan tingkat keberhasilan tinggi</p>
-                </div>
-                <div class="service-card">
-                    <h3 class="card-title">Custom Upgrade</h3>
-                    <p class="card-description">Upgrade RAM, storage, dan modifikasi device sesuai kebutuhan</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-container">
-            <h2 class="contact-title">Hubungi Kami</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="contact-heading">Lokasi</h3>
-                    <p class="contact-text">Jl. Merdeka No. 123<br>Kota, Provinsi 12345</p>
-                </div>
-                <div class="contact-info">
-                    <h3 class="contact-heading">Telepon</h3>
-                    <p class="contact-text">+62 812 3456 7890</p>
-                </div>
-                <div class="contact-info">
-                    <h3 class="contact-heading">Jam Operasional</h3>
-                    <p class="contact-text">Senin - Jumat: 09:00 - 17:00<br>Sabtu: 09:00 - 15:00<br>Minggu: Tutup</p>
-                </div>
+                
+                <button class="carousel-arrow carousel-arrow-next" id="nextBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -90,8 +86,85 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <p class="footer-text">&copy; 2024 RAB Service. Semua hak dilindungi.</p>
+            <div class="footer-content">
+                <!-- Left Column: Contact Info -->
+                <div class="footer-left">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4 class="contact-label">Jl. Merdeka No. 123</h4>
+                            <p class="contact-detail">Kota, Provinsi 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4 class="contact-label">+62 812 3456 7890</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <path d="m22 7-10 5L2 7"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4 class="contact-label"><a href="mailto:support@rabservice.com" class="email-link">support@rabservice.com</a></h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: About & Social -->
+                <div class="footer-right">
+                    <h3 class="about-title">Tentang Perusahaan</h3>
+                    <p class="about-description">
+                        RAB Service adalah layanan profesional untuk semua kebutuhan handphone dan gadget Anda. Dengan teknisi berpengalaman, kami siap memberikan solusi terbaik untuk device Anda.
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 002.856-3.915 9.958 9.958 0 01-2.828.856 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.006 1.422-.103.249-.129.597-.129.946v5.437h-3.554s.048-8.814 0-9.737h3.554v1.378c.43-.664 1.195-1.61 2.905-1.61 2.121 0 3.71 1.388 3.71 4.372v5.597zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.957.77-1.715 1.958-1.715 1.187 0 1.914.758 1.939 1.715 0 .953-.752 1.715-1.982 1.715zm1.946 11.597H3.392V9.671h3.891v10.781zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2024 RAB Service. Semua hak dilindungi.</p>
+            </div>
         </div>
     </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>

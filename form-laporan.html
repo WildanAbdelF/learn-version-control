@@ -201,9 +201,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         // INISIALISASI SUPABASE (Ganti dengan URL dan ANON KEY dari project Supabase Anda!)
-        const SUPABASE_URL = 'https://xyzabcdef.supabase.co'; // GANTI INI
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI...'; // GANTI INI
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const SUPABASE_URL = 'https://dyhcxkivdhwopgedvwfg.supabase.co'; // GANTI INI
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5aGN4a2l2ZGh3b3BnZWR2d2ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NTEzODgsImV4cCI6MjA5NDMyNzM4OH0.FkGq1JkOOD9vF404Q20JQFXg66DlD7lM8npEBWgVapc'; // GANTI INI
+        
+        // Perbaikan: gunakan nama variabel supabaseClient untuk menghindari bentrok 
+        // dengan nama global 'supabase' dari library CDN
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         document.getElementById('laporanForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -227,15 +230,15 @@
                     const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
                     const filePath = `public/${fileName}`;
 
-                    // Upload ke bucket bernama "laporan_foto" (seperti yg diarahkan sebelumnya)
-                    const { data: uploadData, error: uploadError } = await supabase.storage
+                    // Upload ke bucket bernama "laporan_foto"
+                    const { data: uploadData, error: uploadError } = await supabaseClient.storage
                         .from('laporan_foto')
                         .upload(filePath, file);
 
                     if (uploadError) throw uploadError;
 
                     // Dapatkan Public URL nya
-                    const { data: publicUrlData } = supabase.storage
+                    const { data: publicUrlData } = supabaseClient.storage
                         .from('laporan_foto')
                         .getPublicUrl(filePath);
                         
@@ -243,7 +246,7 @@
                 }
 
                 // 3. Insert ke PostreSQL Database Supabase
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('laporan')
                     .insert([
                         {

@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
         gap: 24,
         
         init: function() {
+            // Cegah error jika elemen carousel tidak ditemukan (misal di halaman form-laporan)
+            if (!this.track || !this.prevBtn || !this.nextBtn) return;
+
             this.prevBtn.addEventListener('click', () => this.prev());
             this.nextBtn.addEventListener('click', () => this.next());
             this.updateCardWidth();

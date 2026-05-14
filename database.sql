@@ -42,3 +42,13 @@ CREATE POLICY "Admin bisa melihat laporan"
     FOR SELECT 
     TO authenticated 
     USING (true);
+
+-- ==========================================
+-- POLICY UNTUK STORAGE (BUCKET: laporan_foto)
+-- ==========================================
+-- Policy 3: Mengizinkan public/anon untuk MENGUPLOAD file ke bucket "laporan_foto"
+CREATE POLICY "Izinkan publik upload foto"
+    ON storage.objects
+    FOR INSERT
+    TO public
+    WITH CHECK (bucket_id = 'laporan_foto');

@@ -264,11 +264,33 @@
 
                 if (error) throw error;
 
+                // Format Pesan WhatsApp
+                const nomorAdmin = "6289607634083"; // GANTI: Nomor WA Admin/Toko (Gunakan format 62...)
+                const pesanWA = `*LAPORAN PERBAIKAN BARU*\n\n` +
+                                `*Data Pelanggan:*\n` +
+                                `- Nama: ${formData.get('nama')}\n` +
+                                `- No. Telepon: ${formData.get('telepon')}\n` +
+                                `- Domisili: ${formData.get('domisili')}\n\n` +
+                                `*Detail Perangkat:*\n` +
+                                `- Jenis: ${formData.get('jenis_gadget')}\n` +
+                                `- Merk: ${formData.get('merk_gadget')}\n` +
+                                `- Tipe: ${formData.get('versi_gadget')}\n\n` +
+                                `*Detail Kerusakan:*\n` +
+                                `- Kategori: ${formData.get('kategori_keluhan')}\n` +
+                                `- Deskripsi: ${formData.get('deskripsi_laporan')}\n\n` +
+                                `_Mohon segera diproses, terima kasih!_`;
+
+                // Encode pesan untuk format URL
+                const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesanWA)}`;
+
                 // Notifikasi Sukses
-                alert('Laporan berhasil dikirim! Tim kami akan segera menghubungi Anda.');
+                alert('Laporan berhasil disimpan di sistem. Anda akan diarahkan ke WhatsApp untuk mengirim tiket ini ke Admin.');
                 
                 // Reset form setelah sukses
                 this.reset();
+
+                // Arahkan halaman saat ini langsung ke WhatsApp (menghindari pemblokiran Popup oleh browser)
+                window.location.href = linkWA;
                 
             } catch (error) {
                 console.error('Error submitting form:', error);

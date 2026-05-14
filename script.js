@@ -1,5 +1,25 @@
-// Carousel Functionality
+// Navbar Hamburger Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
+    // Carousel Functionality
     const carousel = {
         track: document.getElementById('carouselTrack'),
         prevBtn: document.getElementById('prevBtn'),

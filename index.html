@@ -15,7 +15,14 @@
                 <img src="logo.png" alt="RAB Service Logo" class="logo-image">
                 <span class="logo-text">RAB Service</span>
             </div>
-            <ul class="nav-menu">
+            
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Beranda</a></li>
                 <li><a href="#services" class="nav-link">Layanan</a></li>
                 <li><a href="#about" class="nav-link">Tentang Kami</a></li>
@@ -33,99 +40,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-container">
-            <h2 class="section-title">Layanan Kami</h2>
-            <p class="section-subtitle">Kami menyediakan berbagai layanan untuk memastikan device Anda selalu dalam kondisi terbaik</p>
-            
-            <div class="carousel-wrapper">
-                <button class="carousel-arrow carousel-arrow-prev" id="prevBtn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                
-                <div class="carousel-container">
-                    <div class="carousel-track" id="carouselTrack">
-                        <div class="service-card">
-                            <h3 class="card-title">Perbaikan Layar</h3>
-                            <p class="card-description">Ganti layar rusak dengan kualitas original dan garansi resmi</p>
-                        </div>
-                        <div class="service-card">
-                            <h3 class="card-title">Servis Hardware</h3>
-                            <p class="card-description">Perbaikan komponen internal dan diagnosa masalah teknis</p>
-                        </div>
-                        <div class="service-card">
-                            <h3 class="card-title">Ganti Baterai</h3>
-                            <p class="card-description">Penggantian baterai original dengan garansi 6 bulan</p>
-                        </div>
-                        <div class="service-card">
-                            <h3 class="card-title">Cleaning & Maintenance</h3>
-                            <p class="card-description">Pembersihan mendalam dan perawatan rutin untuk performa optimal</p>
-                        </div>
-                        <div class="service-card">
-                            <h3 class="card-title">Data Recovery</h3>
-                            <p class="card-description">Pemulihan data dengan teknologi terkini dan tingkat keberhasilan tinggi</p>
-                        </div>
-                        <div class="service-card">
-                            <h3 class="card-title">Custom Upgrade</h3>
-                            <p class="card-description">Upgrade RAM, storage, dan modifikasi device sesuai kebutuhan</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="carousel-arrow carousel-arrow-next" id="nextBtn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section id="why-choose" class="why-choose">
-        <div class="section-container">
-            <h2 class="section-title">Mengapa Memilih RAB Service?</h2>
-            <p class="section-subtitle">Kami memberikan nilai tambah yang membedakan kami dari kompetitor lainnya</p>
-            
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3 class="feature-title">Teknisi Berpengalaman</h3>
-                    <p class="feature-description">Tim teknisi kami memiliki sertifikasi resmi dan pengalaman lebih dari 5 tahun di bidang perbaikan device</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3 class="feature-title">Spare Part Original</h3>
-                    <p class="feature-description">Kami hanya menggunakan spare part asli dengan garansi resmi dari manufaktur terpercaya</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3 class="feature-title">Garansi Layanan</h3>
-                    <p class="feature-description">Semua perbaikan kami dilindungi dengan garansi resmi mulai dari 1 hingga 12 bulan</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3 class="feature-title">Harga Kompetitif</h3>
-                    <p class="feature-description">Kami menawarkan harga terbaik tanpa mengorbankan kualitas layanan dan spare part</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3 class="feature-title">Pengerjaan Cepat</h3>
-                    <p class="feature-description">Kebanyakan perbaikan dapat diselesaikan dalam waktu 1-2 jam tergantung jenis kerusakan</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3 class="feature-title">Konsultasi Gratis</h3>
-                    <p class="feature-description">Layanan diagnosa dan konsultasi gratis sebelum Anda memutuskan untuk melakukan perbaikan</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
+<!-- About Section -->
     <section id="about" class="about-content">
         <div class="section-container">
             <h2 class="section-title">Tentang RAB Service</h2>
@@ -154,6 +69,113 @@
                     <p class="about-card-text">
                         Menjadi pusat layanan handphone dan gadget terdepan di Indonesia yang dikenal karena profesionalisme, integritas, dan kepuasan pelanggan. Kami ingin menjadi pilihan utama masyarakat dalam setiap kebutuhan perbaikan dan maintenance device.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Perbaikan Section -->
+    <section id="request-perbaikan" class="request-perbaikan">
+        <div class="section-container request-perbaikan-container">
+            <div class="request-left">
+                <h2 class="request-title">Request Perbaikan</h2>
+                <h3 class="request-subtitle">Solusi Cepat untuk Gadget Anda</h3>
+            </div>
+            <div class="request-right">
+                <p class="request-desc">Kami siap membantu mengatasi segala masalah pada handphone, laptop, dan gadget Anda. Laporkan deskripsi masalah Anda dengan detail, dan tim profesional kami akan segera memprosesnya. Jangan biarkan produktivitas Anda terhambat oleh perangkat yang rusak.</p>
+                <a href="form-laporan.html" class="button-request">Isi Form Laporan Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+       <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <h2 class="section-title">Layanan Kami</h2>
+            <p class="section-subtitle">Kami menyediakan berbagai layanan untuk memastikan device Anda selalu dalam kondisi terbaik</p>
+            
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow-prev" id="prevBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="service-card">
+                            <h3 class="card-title">Perbaikan Layar</h3>
+                            <p class="card-description">Ganti layar rusak dengan kualitas original dan pengerjaan berstandar tinggi</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Servis Hardware</h3>
+                            <p class="card-description">Perbaikan komponen internal dan diagnosa masalah teknis</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Ganti Baterai</h3>
+                            <p class="card-description">Penggantian baterai original untuk ketahanan daya yang lebih optimal</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Cleaning & Maintenance</h3>
+                            <p class="card-description">Pembersihan mendalam dan perawatan rutin untuk performa optimal</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Data Recovery</h3>
+                            <p class="card-description">Pemulihan data dengan teknologi terkini dan tingkat keberhasilan tinggi</p>
+                        </div>
+                        <div class="service-card">
+                            <h3 class="card-title">Custom Upgrade</h3>
+                            <p class="card-description">Upgrade RAM, storage, dan modifikasi device sesuai kebutuhan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-arrow carousel-arrow-next" id="nextBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="why-choose">
+        <div class="section-container">
+            <h2 class="section-title">Mengapa Memilih RAB Service?</h2>
+            <p class="section-subtitle">Kami memberikan nilai tambah yang membedakan kami dari kompetitor lainnya</p>
+            
+            <div class="features-grid centered-features">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Teknisi Berpengalaman</h3>
+                    <p class="feature-description">Tim teknisi kami memiliki sertifikasi resmi dan pengalaman lebih dari 5 tahun di bidang perbaikan device</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Spare Part Original</h3>
+                    <p class="feature-description">Kami hanya menggunakan komponen pengganti dengan mutu dan standar pabrik</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Kualitas Terjamin</h3>
+                    <p class="feature-description">Semua perbaikan kami dikerjakan secara profesional untuk hasil pengerjaan yang tahan lama</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Harga Kompetitif</h3>
+                    <p class="feature-description">Kami menawarkan harga terbaik tanpa mengorbankan kualitas layanan dan spare part</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Pengerjaan Cepat</h3>
+                    <p class="feature-description">Kebanyakan perbaikan dapat diselesaikan dalam waktu 1-2 jam tergantung jenis kerusakan</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Konsultasi Gratis</h3>
+                    <p class="feature-description">Layanan diagnosa dan konsultasi gratis sebelum Anda memutuskan untuk melakukan perbaikan</p>
                 </div>
             </div>
         </div>

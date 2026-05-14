@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Laporan Perbaikan - RAB Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-section {
+            padding: var(--spacing-section) var(--spacing-lg);
+            background-color: var(--canvas);
+            min-height: calc(100vh - 200px);
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--surface-soft);
+            padding: var(--spacing-xxl);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--hairline);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+        .form-header h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--ink);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 15px;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-row {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .form-submit {
+            margin-top: var(--spacing-xl);
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--spacing-md);
+        }
+        .btn-cancel {
+            background-color: transparent;
+            border: 1px solid var(--hairline-strong);
+            color: var(--ink);
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (Simplified for subpage) -->
+    <nav class="navbar" style="background-color: var(--surface-dark);">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="logo.png" alt="RAB Service Logo" class="logo-image">
+                    <span class="logo-text">RAB Service</span>
+                </a>
+            </div>
+            
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Kembali ke Beranda</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Form Laporan Perbaikan</h2>
+                <p>Isi detail identitas dan kendala pada perangkat Anda di bawah ini</p>
+            </div>
+            <form id="laporanForm">
+                <!-- 1. Identitas -->
+                <h3 style="margin-bottom: var(--spacing-sm); margin-top: var(--spacing-lg);">1. Data Diri</h3>
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap *</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telepon">Nomor Telepon / WhatsApp *</label>
+                        <input type="tel" id="telepon" name="telepon" required placeholder="Contoh: 08123456789">
+                    </div>
+                    <div class="form-group">
+                        <label for="domisili">Domisili (Kecamatan/Kota) *</label>
+                        <input type="text" id="domisili" name="domisili" required placeholder="Contoh: Kebayoran Baru, Jakarta Selatan">
+                    </div>
+                </div>
+
+                <!-- 2-4. Detail Gadget -->
+                <h3 style="margin-bottom: var(--spacing-sm); margin-top: var(--spacing-lg);">2. Detail Perangkat</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="jenis_gadget">Jenis Gadget *</label>
+                        <select id="jenis_gadget" name="jenis_gadget" required>
+                            <option value="">-- Pilih Jenis --</option>
+                            <option value="HP">Handphone (HP)</option>
+                            <option value="Laptop">Laptop / Macbook</option>
+                            <option value="Lainnya">Gadget Lainnya (Tablet, Smartwatch, dll)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="merk_gadget">Merk Gadget *</label>
+                        <input type="text" id="merk_gadget" name="merk_gadget" required placeholder="Contoh: Samsung, Apple, Asus">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="versi_gadget">Versi / Tipe/ Model Gadget *</label>
+                    <input type="text" id="versi_gadget" name="versi_gadget" required placeholder="Contoh: Galaxy S23 Ultra, Macbook Pro M2 2022">
+                </div>
+
+                <!-- 5-6. Detail Keluhan -->
+                <h3 style="margin-bottom: var(--spacing-sm); margin-top: var(--spacing-lg);">3. Detail Masalah</h3>
+                <div class="form-group">
+                    <label for="kategori_keluhan">Kategori Keluhan *</label>
+                    <select id="kategori_keluhan" name="kategori_keluhan" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="Layar/LCD">Layar/LCD Pecah atau Blank</option>
+                        <option value="Baterai">Baterai Drop/Bocor</option>
+                        <option value="Mati Total">Perangkat Mati Total (Matot)</option>
+                        <option value="Software">Masalah Software / Hang / OS</option>
+                        <option value="Hardware Lain">Masalah Hardware Lain (Kamera, Port Charge, dll)</option>
+                        <option value="Maintenance">Perawatan / Cleaning / Upgrade</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="deskripsi_laporan">Deskripsi Lengkap *</label>
+                    <textarea id="deskripsi_laporan" name="deskripsi_laporan" required placeholder="Ceritakan detail kerusakan atau masalah yang Anda alami secara lengkap..."></textarea>
+                </div>
+
+                <!-- 7. Foto Keluhan -->
+                <h3 style="margin-bottom: var(--spacing-sm); margin-top: var(--spacing-lg);">4. Lampiran Bukti</h3>
+                <div class="form-group">
+                    <label for="foto">Foto Perangkat / Kerusakan (Opsional)</label>
+                    <input type="file" id="foto" name="foto" accept="image/*">
+                    <small style="color: var(--hairline-strong); display: block; margin-top: 4px;">Pilih file gambar jika ada.</small>
+                </div>
+
+                <div class="form-submit">
+                    <a href="index.html" class="btn-cancel">Batal</a>
+                    <button type="submit" class="button-request">Kirim Laporan</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding-top: var(--spacing-xl);">
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 RAB Service. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Nantinya script untuk integrasi ke Supabase ditaruh di sini
+        document.getElementById('laporanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // TODO: Implementasi upload gambar ke Supabase Storage (bila ada)
+            // TODO: Implementasi insert record data ke Supabase Postgres
+            alert('Fitur pengiriman sedang disiapkan!');
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -108,6 +108,42 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary);
 }
 
+/* Hamburger Menu CSS */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.hamburger.active span:first-child {
+    transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
 /* ====================================
    Hero Section
    ==================================== */
@@ -499,6 +535,75 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--body);
 }
 
+/* ====================================
+   Request Perbaikan Section
+   ==================================== */
+.request-perbaikan {
+    background-color: var(--surface-dark);
+    padding: var(--spacing-section) var(--spacing-lg);
+    color: var(--on-dark);
+}
+
+.request-perbaikan-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xxl);
+    align-items: center;
+}
+
+.request-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.request-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary);
+}
+
+.request-subtitle {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--on-dark);
+}
+
+.request-right {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.request-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.67;
+    margin-bottom: var(--spacing-xl);
+    color: var(--on-dark-mute);
+}
+
+.button-request {
+    background-color: var(--primary);
+    color: var(--ink);
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+}
+
+.button-request:hover {
+    background-color: var(--primary-dark);
+}
+
 /* Why Choose Section */
 .why-choose {
     background-color: var(--surface-soft);
@@ -510,6 +615,10 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-xl);
     margin-top: var(--spacing-xxl);
+}
+
+.centered-features {
+    justify-content: center;
 }
 
 .feature-item {
@@ -710,14 +819,41 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
     .navbar-container {
-        flex-direction: column;
-        gap: var(--spacing-lg);
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+    }
+    
+    .hamburger {
+        display: flex;
     }
     
     .nav-menu {
-        gap: var(--spacing-lg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--surface-dark);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        border-bottom: none;
     }
     
+    .nav-menu.active {
+        max-height: 300px; /* Adjust according to items */
+        border-bottom: 1px solid var(--hairline-strong);
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+        padding: var(--spacing-md) 0;
+    }
+
     .hero {
         padding: var(--spacing-xxl) var(--spacing-lg);
         min-height: 400px;

@@ -618,7 +618,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .centered-features {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+}
+
+.centered-features .feature-item {
+    flex: 1 1 280px;
+    max-width: 350px;
 }
 
 .feature-item {

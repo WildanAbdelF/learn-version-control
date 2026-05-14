@@ -197,13 +197,84 @@
         </div>
     </footer>
     
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Nantinya script untuk integrasi ke Supabase ditaruh di sini
-        document.getElementById('laporanForm').addEventListener('submit', function(e) {
+        // INISIALISASI SUPABASE (Ganti dengan URL dan ANON KEY dari project Supabase Anda!)
+        const SUPABASE_URL = 'https://xyzabcdef.supabase.co'; // GANTI INI
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI...'; // GANTI INI
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        document.getElementById('laporanForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            // TODO: Implementasi upload gambar ke Supabase Storage (bila ada)
-            // TODO: Implementasi insert record data ke Supabase Postgres
-            alert('Fitur pengiriman sedang disiapkan!');
+            
+            // Ubah teks tombol menjadi loading
+            const submitBtn = document.querySelector('.button-request');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Mengirim...';
+            submitBtn.disabled = true;
+
+            try {
+                // 1. Ambil data dari form
+                const formData = new FormData(this);
+                const file = formData.get('foto');
+                let fotoUrl = null;
+
+                // 2. Upload file ke Supabase Storage (jika ada file foto)
+                if (file && file.size > 0) {
+                    // Buat nama file unik
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+                    const filePath = `public/${fileName}`;
+
+                    // Upload ke bucket bernama "laporan_foto" (seperti yg diarahkan sebelumnya)
+                    const { data: uploadData, error: uploadError } = await supabase.storage
+                        .from('laporan_foto')
+                        .upload(filePath, file);
+
+                    if (uploadError) throw uploadError;
+
+                    // Dapatkan Public URL nya
+                    const { data: publicUrlData } = supabase.storage
+                        .from('laporan_foto')
+                        .getPublicUrl(filePath);
+                        
+                    fotoUrl = publicUrlData.publicUrl;
+                }
+
+                // 3. Insert ke PostreSQL Database Supabase
+                const { data, error } = await supabase
+                    .from('laporan')
+                    .insert([
+                        {
+                            nama: formData.get('nama'),
+                            no_telepon: formData.get('telepon'),
+                            domisili: formData.get('domisili'),
+                            jenis_gadget: formData.get('jenis_gadget'),
+                            merk_gadget: formData.get('merk_gadget'),
+                            versi_gadget: formData.get('versi_gadget'),
+                            kategori_keluhan: formData.get('kategori_keluhan'),
+                            deskripsi_laporan: formData.get('deskripsi_laporan'),
+                            foto_url: fotoUrl
+                        }
+                    ]);
+
+                if (error) throw error;
+
+                // Notifikasi Sukses
+                alert('Laporan berhasil dikirim! Tim kami akan segera menghubungi Anda.');
+                
+                // Reset form setelah sukses
+                this.reset();
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('Gagal mengirim laporan. Gagal koneksi ke database atau silahkan cek pengaturan API Supabase Anda. Detail: ' + error.message);
+            } finally {
+                // Kembalikan tombol ke keadaan semula
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
         });
     </script>
     <script src="script.js"></script>

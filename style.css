@@ -38,6 +38,8 @@
 
 html {
     scroll-behavior: smooth;
+    /* Tambahan scroll-padding-top untuk memberikan margin atas pada anchor link (menutupi tinggi fixed navbar) */
+    scroll-padding-top: 70px;
 }
 
 body {

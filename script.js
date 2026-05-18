@@ -111,6 +111,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (bgAudio && audioToggleBtn) {
         bgAudio.volume = 0.5;
+
+        // Coba putar otomatis saat halaman dimuat:
+        let playPromise = bgAudio.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log('Autoplay tertahan oleh browser. Menunggu interaksi user...');
+            });
+        }
         const playAudioOnInteract = () => {
             if (bgAudio.paused && !audioToggleBtn.classList.contains('muted')) {
                 bgAudio.play().catch(e => console.log('Autoplay prevented:', e));

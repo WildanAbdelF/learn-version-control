@@ -102,4 +102,35 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     carousel.init();
+
+    // Audio Player Functionality
+    const bgAudio = document.getElementById('bgAudio');
+    const audioToggleBtn = document.getElementById('audioToggleBtn');
+    const iconUnmuted = document.getElementById('icon-unmuted');
+    const iconMuted = document.getElementById('icon-muted');
+
+    if (bgAudio && audioToggleBtn) {
+        bgAudio.volume = 0.5;
+        const playAudioOnInteract = () => {
+            if (bgAudio.paused && !audioToggleBtn.classList.contains('muted')) {
+                bgAudio.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+            document.removeEventListener('click', playAudioOnInteract);
+        };
+        document.addEventListener('click', playAudioOnInteract);
+
+        audioToggleBtn.addEventListener('click', function() {
+            if (bgAudio.paused) {
+                bgAudio.play();
+                audioToggleBtn.classList.remove('muted');
+                iconUnmuted.style.display = 'block';
+                iconMuted.style.display = 'none';
+            } else {
+                bgAudio.pause();
+                audioToggleBtn.classList.add('muted');
+                iconUnmuted.style.display = 'none';
+                iconMuted.style.display = 'block';
+            }
+        });
+    }
 });

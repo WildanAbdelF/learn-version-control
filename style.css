@@ -1,4 +1,4 @@
-/* ====================================
+﻿/* ====================================
    Global Styles & Reset
    ==================================== */
 * {
@@ -921,5 +921,117 @@ h1, h2, h3, h4, h5, h6 {
     
     .contact-grid {
         gap: var(--spacing-lg);
+    }
+}
+
+/* ====================================
+   Floating Audio Button
+   ==================================== */
+.audio-toggle-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--ink);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.audio-toggle-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.audio-toggle-btn.muted {
+    background-color: var(--mute);
+    color: var(--on-dark);
+}
+
+.audio-toggle-btn:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.audio-toggle-btn.muted:hover {
+    background-color: var(--stone);
+}
+
+/* Responsive Audio Button */
+@media (max-width: 768px) {
+    .audio-toggle-btn {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .audio-toggle-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* ====================================
+   Floating Audio Button
+   ==================================== */
+.audio-toggle-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--ink);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.audio-toggle-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.audio-toggle-btn.muted {
+    background-color: var(--mute);
+    color: var(--on-dark);
+}
+
+.audio-toggle-btn:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.audio-toggle-btn.muted:hover {
+    background-color: var(--stone);
+}
+
+/* Responsive Audio Button */
+@media (max-width: 768px) {
+    .audio-toggle-btn {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .audio-toggle-btn svg {
+        width: 24px;
+        height: 24px;
     }
 }

@@ -6,6 +6,9 @@
     <title>Form Laporan Perbaikan - RAB Service</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Tambahan library untuk Popup dan PDF -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         .form-section {
             padding: var(--spacing-section) var(--spacing-lg);
@@ -29,6 +32,12 @@
             color: var(--primary);
             margin-bottom: var(--spacing-xs);
         }
+        
+        /* Tambahan class untuk jarak button pada SweetAlert2 */
+        .swal-actions-gap {
+            gap: 12px;
+        }
+
         .form-group {
             margin-bottom: var(--spacing-md);
         }
@@ -265,7 +274,7 @@
                 if (error) throw error;
 
                 // Format Pesan WhatsApp
-                const nomorAdmin = "6289607634083"; // GANTI: Nomor WA Admin/Toko (Gunakan format 62...)
+                const nomorAdmin = "62895629151522"; // GANTI: Nomor WA Admin/Toko (Gunakan format 62...)
                 const pesanWA = `*LAPORAN PERBAIKAN BARU*\n\n` +
                                 `*Data Pelanggan:*\n` +
                                 `- Nama: ${formData.get('nama')}\n` +
@@ -283,18 +292,101 @@
                 // Encode pesan untuk format URL
                 const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesanWA)}`;
 
-                // Notifikasi Sukses
-                alert('Laporan berhasil disimpan di sistem. Anda akan diarahkan ke WhatsApp untuk mengirim tiket ini ke Admin.');
+                // Fungsi Generate PDF
+                const generatePDF = () => {
+                    const doc = new window.jspdf.jsPDF();
+                    
+                    doc.setFontSize(22);
+                    doc.setTextColor(0, 191, 165); // Green primary
+                    doc.text("RAB Service - Tiket Pelaporan", 105, 20, null, null, "center");
+                    
+                    doc.setFontSize(12);
+                    doc.setTextColor(0, 0, 0);
+                    doc.text("Tanggal: " + new Date().toLocaleDateString('id-ID'), 20, 35);
+                    
+                    doc.text("DATA PELANGGAN", 20, 50);
+                    doc.line(20, 52, 190, 52);
+                    doc.text("Nama: " + formData.get('nama'), 20, 60);
+                    doc.text("Nomor Telepon: " + formData.get('telepon'), 20, 68);
+                    doc.text("Domisili: " + formData.get('domisili'), 20, 76);
+                    
+                    doc.text("DETAIL PERANGKAT", 20, 92);
+                    doc.line(20, 94, 190, 94);
+                    doc.text("Jenis: " + formData.get('jenis_gadget'), 20, 102);
+                    doc.text("Merk: " + formData.get('merk_gadget'), 20, 110);
+                    doc.text("Tipe/Versi: " + formData.get('versi_gadget'), 20, 118);
+                    
+                    doc.text("DETAIL KERUSAKAN", 20, 134);
+                    doc.line(20, 136, 190, 136);
+                    doc.text("Kategori Keluhan: " + formData.get('kategori_keluhan'), 20, 144);
+                    
+                    // Handle multiline description
+                    const splitDeskripsi = doc.splitTextToSize("Deskripsi: " + formData.get('deskripsi_laporan'), 170);
+                    doc.text(splitDeskripsi, 20, 152);
+                    
+                    doc.setFontSize(10);
+                    doc.setTextColor(150, 150, 150);
+                    doc.text("Simpan tiket ini sebagai bukti pelaporan perbaikan device Anda.", 105, 280, null, null, "center");
+                    
+                    doc.save("Tiket_Perbaikan_RABService.pdf");
+                };
+
+                // Notifikasi Sukses dengan Popup
+                Swal.fire({
+                    title: 'Laporan Berhasil Terkirim!',
+                    text: 'Silahkan unduh tiket PDF Anda atau lanjutkan langsung ke WhatsApp Admin.',
+                    icon: 'success',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Lanjut WhatsApp',
+                    denyButtonText: 'Unduh Tiket (PDF)',
+                    cancelButtonText: 'Tutup',
+                    customClass: {
+                        confirmButton: 'button-request',
+                        denyButton: 'button-request',
+                        cancelButton: 'btn-cancel',
+                        actions: 'swal-actions-gap'
+                    },
+                    buttonsStyling: false,
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = linkWA;
+                    } else if (result.isDenied) {
+                        generatePDF();
+                        Swal.fire({
+                            title: 'PDF Berhasil Diunduh!',
+                            text: 'Jangan lupa untuk mengirimkan tiket ke Admin melalui WhatsApp agar cepat diproses.',
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonText: 'Kirim ke WhatsApp',
+                            cancelButtonText: 'Tutup',
+                            customClass: {
+                                confirmButton: 'button-request',
+                                cancelButton: 'btn-cancel',
+                                actions: 'swal-actions-gap'
+                            },
+                            buttonsStyling: false
+                        }).then((waRes) => {
+                            if (waRes.isConfirmed) window.location.href = linkWA;
+                        });
+                    }
+                });
                 
                 // Reset form setelah sukses
                 this.reset();
-
-                // Arahkan halaman saat ini langsung ke WhatsApp (menghindari pemblokiran Popup oleh browser)
-                window.location.href = linkWA;
                 
             } catch (error) {
                 console.error('Error submitting form:', error);
-                alert('Gagal mengirim laporan. Gagal koneksi ke database atau silahkan cek pengaturan API Supabase Anda. Detail: ' + error.message);
+                Swal.fire({
+                    title: 'Gagal!',
+                    text: 'Gagal mengirim laporan. Cek koneksi Anda. Detail: ' + error.message,
+                    icon: 'error',
+                    customClass: {
+                        confirmButton: 'button-request'
+                    },
+                    buttonsStyling: false
+                });
             } finally {
                 // Kembalikan tombol ke keadaan semula
                 submitBtn.innerText = originalText;

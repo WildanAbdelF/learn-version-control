@@ -123,9 +123,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (bgAudio.paused && !audioToggleBtn.classList.contains('muted')) {
                 bgAudio.play().catch(e => console.log('Autoplay prevented:', e));
             }
-            document.removeEventListener('click', playAudioOnInteract);
+            // Hapus event listener setelah interaksi pertama
+            ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
+                document.removeEventListener(evt, playAudioOnInteract);
+            });
         };
-        document.addEventListener('click', playAudioOnInteract);
+        
+        // Tambahkan event listener untuk berbagai jenis interaksi pertama user
+        ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
+            document.addEventListener(evt, playAudioOnInteract, { once: true });
+        });
 
         audioToggleBtn.addEventListener('click', function() {
             if (bgAudio.paused) {

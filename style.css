@@ -351,6 +351,19 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
+.footer-map {
+    width: 100%;
+    margin: 16px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.footer-map iframe {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
 .contact-icon {
     width: 56px;
     height: 56px;

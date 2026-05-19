@@ -120,8 +120,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         const playAudioOnInteract = () => {
+            // Jika audio sedang dijeda dan tombol mute belum aktif (user belum menekan mute manual)
             if (bgAudio.paused && !audioToggleBtn.classList.contains('muted')) {
-                bgAudio.play().catch(e => console.log('Autoplay prevented:', e));
+                bgAudio.play().then(() => {
+                    // Update UI icon agar sesuai
+                    audioToggleBtn.classList.remove('muted');
+                    iconUnmuted.style.display = 'block';
+                    iconMuted.style.display = 'none';
+                }).catch(e => console.log('Autoplay prevented:', e));
             }
             // Hapus event listener setelah interaksi pertama
             ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
@@ -131,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Tambahkan event listener untuk berbagai jenis interaksi pertama user
         ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
-            document.addEventListener(evt, playAudioOnInteract, { once: true });
+            document.addEventListener(evt, playAudioOnInteract, { once: true, passive: true });
         });
 
         audioToggleBtn.addEventListener('click', function() {

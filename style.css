@@ -905,6 +905,11 @@ h1, h2, h3, h4, h5, h6 {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 }
 
 @media (max-width: 480px) {

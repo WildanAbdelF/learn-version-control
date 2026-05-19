@@ -927,6 +927,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ====================================
+   Floating WhatsApp Button
+   ==================================== */
+.wa-floating-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 96px; /* 24px + 56px + 16px */
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.wa-floating-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+.wa-floating-btn:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+
+/* ====================================
    Floating Audio Button
    ==================================== */
 .audio-toggle-btn {
@@ -969,6 +1003,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Audio Button */
 @media (max-width: 768px) {
+    .wa-floating-btn {
+        bottom: 16px;
+        right: 80px; /* 16px + 48px + 16px */
+        width: 48px;
+        height: 48px;
+    }
+    
+    .wa-floating-btn svg {
+        width: 28px;
+        height: 28px;
+    }
+
     .audio-toggle-btn {
         bottom: 16px;
         right: 16px;
